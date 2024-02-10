@@ -2,12 +2,13 @@
 
 **Lab. Report \#2 – Requirements-Based Test Generation**
 
-| Group \#:      |     |
+| Group 8:      |     |
 | -------------- | --- |
 | Student Names: |     |
-|                |     |
-|                |     |
-|                |     |
+|       Stevan Beljic         |     |
+|        Aaron Giang        |     |
+|        Angelo Troncone        |     |
+|        Rutvi Brahmbhatt        |     |
 
 # 1 Introduction
 
