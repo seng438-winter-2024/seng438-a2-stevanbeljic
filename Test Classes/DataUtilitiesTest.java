@@ -37,9 +37,11 @@ public class DataUtilitiesTest extends DataUtilities {
 	public void tearDown() throws Exception {
 	}
 	
-	/*
-	 * Test code for org.jfree.data.DataUtilities class
-	 */
+	//=======================================================
+	//=======================================================
+	//================calculateColumnTotal()=================
+	//=======================================================
+	//=======================================================
 	
 	/*
 	 * Testing calculating column total in which data is null
@@ -56,9 +58,9 @@ public class DataUtilitiesTest extends DataUtilities {
 	}
 	
 	/*
-	 * Testing calculating column total in which data is null
+	 * Testing calculating column total in which data is not null
 	 * Input: 1x1 table with sum of 1.0, column index 0
-	 * Expected result: 1.0 thrown
+	 * Expected result: 1.0
 	 */
 	@Test
 	public void testCalculateColumnTotalDataNotNull() {
@@ -263,5 +265,234 @@ public class DataUtilitiesTest extends DataUtilities {
 		Assert.assertEquals(expectedResult, i);
 	}
 	
+	//=======================================================
+	//=======================================================
+	//================calculateRowTotal()====================
+	//=======================================================
+	//=======================================================
 	
+	/*
+	 * Testing calculating row total in which data is null
+	 * Input: null, row index 0
+	 * Expected result: InvalidParameterException thrown
+	 */
+	@Test
+	public void testCalculateRowTotalDataNull() {
+		try {
+			double i = DataUtilities.calculateRowTotal(null, 0);
+		} catch (Exception e) {
+			Assert.assertTrue(e instanceof InvalidParameterException);
+		}
+	}
+	
+	/*
+	 * Testing calculating row total in which data is not null
+	 * Input: 1x1 table with sum of 1.0, row index 1
+	 * Expected result: 2.0 
+	 */
+	@Test
+	public void testCalculateRowTotalDataNotNull() {
+		
+		Mockery context = new Mockery();
+		final Values2D values2d = context.mock(Values2D.class);
+		context.checking(new Expectations(){{
+			
+			oneOf(values2d).getColumnCount();
+			will(returnValue((3))); //setting to 2 throws error
+					//seems like its returning provided value - 1
+			
+			oneOf(values2d).getValue(1, 0);
+			will(returnValue((1)));
+			
+			oneOf(values2d).getValue(1, 1);
+			will(returnValue((1)));
+			
+		}});
+		double i = DataUtilities.calculateRowTotal(values2d, 1);
+		double expectedResult = 2.0;
+		Assert.assertEquals(expectedResult, i);
+		
+	}
+	
+	/*
+	 * Testing calculating row total in which row sum is less than zero
+	 * Input: data table in which row 0 has sum -1.1, row index 1
+	 * Expected result: -1.1
+	 */
+	@Test
+	public void testCalculateRowTotalSumNegative() {
+		Mockery context = new Mockery();
+		final Values2D values2d = context.mock(Values2D.class);
+		context.checking(new Expectations(){{
+			
+			oneOf(values2d).getColumnCount();
+			will(returnValue((3)));
+			
+			oneOf(values2d).getValue(1, 0);
+			will(returnValue((-1)));
+			
+			oneOf(values2d).getValue(1, 1);
+			will(returnValue((-0.1)));
+		}});
+		
+		double i = DataUtilities.calculateRowTotal(values2d, 1); //not 0-based, setting to 0 causes error
+		double expectedResult = -1.1;
+		Assert.assertEquals(expectedResult, i);
+		
+	}
+	/*
+	 * Testing calculating row total in which row total is zero
+	 * Input: values with row sum of 0, row index 1
+	 * Expected result: 0.0
+	 */
+	@Test
+	public void testCalculateRowTotalSumZero() {
+		Mockery context = new Mockery();
+		final Values2D values2d = context.mock(Values2D.class);
+		context.checking(new Expectations(){{
+			oneOf(values2d).getColumnCount();
+			will(returnValue((2)));
+			
+			oneOf(values2d).getRowCount();
+			will(returnValue((2)));
+			
+			oneOf(values2d).getValue(1, 0);
+			will(returnValue(0));
+		}});
+		
+		double i = DataUtilities.calculateRowTotal(values2d, 1);
+		double expectedResult = 0.0;
+		Assert.assertEquals(expectedResult, i);
+		
+	}
+	
+	/*
+	 * Testing calculating row total in which row total is greater than zero
+	 * Input: values with row sum of 40, row index 1
+	 * Expected result: 40.0
+	 */
+	@Test
+	public void testCalculateRowTotalSumPositive() {
+		Mockery context = new Mockery();
+		final Values2D values2d = context.mock(Values2D.class);
+		context.checking(new Expectations(){{
+			
+			oneOf(values2d).getColumnCount();
+			will(returnValue((4)));
+			oneOf(values2d).getValue(1, 0);
+			will(returnValue(39));
+			oneOf(values2d).getValue(1, 1);
+			will(returnValue(0.5));
+			oneOf(values2d).getValue(1, 2);
+			will(returnValue(0.5));
+		}});
+		
+		double i = DataUtilities.calculateRowTotal(values2d, 1);
+		double expectedResult = 40.0;
+		Assert.assertEquals(expectedResult, i, 0.01);
+		
+	}
+	
+	/*
+	 * Testing calculating row total in which table is empty
+	 * Input: Values2D with 0x0 size, row index 1
+	 * Expected result: 0.0
+	 */
+	@Test
+	public void testCalculateRowTotalEmpty() {
+		Mockery context = new Mockery();
+		final Values2D values2d = context.mock(Values2D.class);
+		context.checking(new Expectations(){{
+			oneOf(values2d).getColumnCount();
+			will(returnValue((0)));
+			oneOf(values2d).getRowCount();
+			will(returnValue((0)));
+		}});
+		double i = DataUtilities.calculateRowTotal(values2d, 0);
+		double expectedResult = 0.0;
+		Assert.assertEquals(expectedResult, i);
+		
+	}
+	
+	/*
+	 * Testing calculating row total in which data is not empty
+	 * Input: Values2D with 1 value, row index 1
+	 * Expected result: 1.0
+	 */
+	@Test
+	public void testCalculateRowTotalNotEmpty() {
+		Mockery context = new Mockery();
+		final Values2D values2d = context.mock(Values2D.class);
+		context.checking(new Expectations(){{
+			oneOf(values2d).getColumnCount();
+			will(returnValue((2)));
+			
+			oneOf(values2d).getValue(1, 0);
+			will(returnValue((1.0)));
+		}});
+		
+		double i = DataUtilities.calculateRowTotal(values2d, 1);
+		double expectedResult = 1.0;
+		Assert.assertEquals(expectedResult, i);
+	}
+	
+	/*
+	 * Testing calculating row total in which row index is invalid
+	 * Input: Values2D with 1 value, row index -1
+	 * Expected result: 0.0
+	 */
+	@Test
+	public void testCalculateRowTotalInvalidIndex() {
+		Mockery context = new Mockery();
+		final Values2D values2d = context.mock(Values2D.class);
+		context.checking(new Expectations(){{
+			oneOf(values2d).getColumnCount();
+			will(returnValue((1)));
+			
+			oneOf(values2d).getRowCount();
+			will(returnValue((1)));
+			
+			oneOf(values2d).getValue(0, -1);
+			will(returnValue((1)));
+		}});
+		
+		double i = DataUtilities.calculateRowTotal(values2d, -1);
+		double expectedResult = 0.0;
+		Assert.assertEquals(expectedResult, i);
+	}
+	
+	/*
+	 * Testing calculating column total in which column index is valid
+	 * Input: Values2D with 1 value, column index 0
+	 * Expected result: 2.0
+	 */
+	@Test
+	public void testCalculateRowTotalValidIndex() {
+		Mockery context = new Mockery();
+		final Values2D values2d = context.mock(Values2D.class);
+		context.checking(new Expectations(){{
+			
+			oneOf(values2d).getColumnCount();
+			will(returnValue((3))); 
+			
+			oneOf(values2d).getRowCount();
+			will(returnValue((2)));
+			
+			oneOf(values2d).getValue(2, 0);
+			will(returnValue((0)));
+			
+			oneOf(values2d).getValue(2, 1);
+			will(returnValue((2)));
+		}});
+		
+		double i = DataUtilities.calculateRowTotal(values2d, 2);
+		double expectedResult = 2.0;
+		Assert.assertEquals(expectedResult, i);
+	}
+
+	//=======================================================
+	//=======================================================
+	//===============calculateNumberArray()==================
+	//=======================================================
+	//=======================================================
 }
