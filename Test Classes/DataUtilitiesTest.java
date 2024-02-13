@@ -8,11 +8,10 @@ import org.jfree.data.Range;
 import org.jfree.data.Values2D;
 import org.junit.Test;
 
-import junit.framework.Assert;
-
 import org.jfree.data.DataUtilities;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.jmock.Mockery;
@@ -53,7 +52,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		try {
 			double i = DataUtilities.calculateColumnTotal(null, 0);
 		} catch (Exception e) {
-			Assert.assertTrue(e instanceof InvalidParameterException);
+			assertTrue(e instanceof InvalidParameterException);
 		}
 	}
 	
@@ -79,7 +78,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		
 		double i = DataUtilities.calculateColumnTotal(values2d, 0);
 		double expectedResult = 1.0;
-		Assert.assertEquals(expectedResult, i);
+		assertEquals(expectedResult, i, 0.00001);
 		
 	}
 	
@@ -107,7 +106,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		
 		double i = DataUtilities.calculateColumnTotal(values2d, 0);
 		double expectedResult = -4.1;
-		Assert.assertEquals(expectedResult, i);
+		assertEquals(expectedResult, i, 0.00001);
 		
 	}
 	/*
@@ -134,7 +133,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		
 		double i = DataUtilities.calculateColumnTotal(values2d, 0);
 		double expectedResult = 0.0;
-		Assert.assertEquals(expectedResult, i);
+		assertEquals(expectedResult, i, 0.00001);
 		
 	}
 	
@@ -164,7 +163,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		
 		double i = DataUtilities.calculateColumnTotal(values2d, 0);
 		double expectedResult = 37.0;
-		Assert.assertEquals(expectedResult, i, 0.1);
+		assertEquals(expectedResult, i, 0.00001);
 		
 	}
 	
@@ -186,7 +185,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		}});
 		double i = DataUtilities.calculateColumnTotal(values2d, 0);
 		double expectedResult = 0.0;
-		Assert.assertEquals(expectedResult, i);
+		assertEquals(expectedResult, i, 0.00001);
 		
 	}
 	
@@ -212,7 +211,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		
 		double i = DataUtilities.calculateColumnTotal(values2d, 0);
 		double expectedResult = 1.0;
-		Assert.assertEquals(expectedResult, i);
+		assertEquals(expectedResult, i, 0.00001);
 	}
 	
 	/*
@@ -237,7 +236,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		
 		double i = DataUtilities.calculateColumnTotal(values2d, -1);
 		double expectedResult = 1.0;
-		Assert.assertEquals(expectedResult, i);
+		assertEquals(expectedResult, i, 0.00001);
 	}
 	
 	/*
@@ -262,7 +261,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		
 		double i = DataUtilities.calculateColumnTotal(values2d, 0);
 		double expectedResult = 2.0;
-		Assert.assertEquals(expectedResult, i);
+		assertEquals(expectedResult, i, 0.00001);
 	}
 	
 	//=======================================================
@@ -281,7 +280,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		try {
 			double i = DataUtilities.calculateRowTotal(null, 0);
 		} catch (Exception e) {
-			Assert.assertTrue(e instanceof InvalidParameterException);
+			assertTrue(e instanceof InvalidParameterException);
 		}
 	}
 	
@@ -310,7 +309,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		}});
 		double i = DataUtilities.calculateRowTotal(values2d, 1);
 		double expectedResult = 2.0;
-		Assert.assertEquals(expectedResult, i);
+		assertEquals(expectedResult, i, 0.00001);
 		
 	}
 	
@@ -337,7 +336,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		
 		double i = DataUtilities.calculateRowTotal(values2d, 1); //not 0-based, setting to 0 causes error
 		double expectedResult = -1.1;
-		Assert.assertEquals(expectedResult, i);
+		assertEquals(expectedResult, i, 0.00001);
 		
 	}
 	/*
@@ -362,7 +361,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		
 		double i = DataUtilities.calculateRowTotal(values2d, 1);
 		double expectedResult = 0.0;
-		Assert.assertEquals(expectedResult, i);
+		assertEquals(expectedResult, i, 0.00001);
 		
 	}
 	
@@ -389,7 +388,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		
 		double i = DataUtilities.calculateRowTotal(values2d, 1);
 		double expectedResult = 40.0;
-		Assert.assertEquals(expectedResult, i, 0.01);
+		assertEquals(expectedResult, i, 0.00001);
 		
 	}
 	
@@ -410,7 +409,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		}});
 		double i = DataUtilities.calculateRowTotal(values2d, 0);
 		double expectedResult = 0.0;
-		Assert.assertEquals(expectedResult, i);
+		assertEquals(expectedResult, i, 0.00001);
 		
 	}
 	
@@ -433,7 +432,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		
 		double i = DataUtilities.calculateRowTotal(values2d, 1);
 		double expectedResult = 1.0;
-		Assert.assertEquals(expectedResult, i);
+		assertEquals(expectedResult, i, 0.00001);
 	}
 	
 	/*
@@ -458,7 +457,7 @@ public class DataUtilitiesTest extends DataUtilities {
 		
 		double i = DataUtilities.calculateRowTotal(values2d, -1);
 		double expectedResult = 0.0;
-		Assert.assertEquals(expectedResult, i);
+		assertEquals(expectedResult, i, 0.00001);
 	}
 	
 	/*
@@ -487,12 +486,51 @@ public class DataUtilitiesTest extends DataUtilities {
 		
 		double i = DataUtilities.calculateRowTotal(values2d, 2);
 		double expectedResult = 2.0;
-		Assert.assertEquals(expectedResult, i);
+		assertEquals(expectedResult, i, 0.00001);
 	}
 
 	//=======================================================
 	//=======================================================
-	//===============calculateNumberArray()==================
+	//=================createNumberArray()===================
 	//=======================================================
 	//=======================================================
+	
+	/*
+	 * Testing created a number array with a null object
+	 * Expected result: InvalidParameterException thrown
+	 */
+	@Test
+	public void testCreateNumberArrayNullData() {
+		try {
+		Number [] x= DataUtilities.createNumberArray(null);
+		} catch (Exception e) {
+			assertTrue("Class is of type" +e.getClass().toString(),e instanceof InvalidParameterException);
+		}
+	}
+	
+	/*
+	 * Testing creating a number array of double array {1.0, 2.0, 3.0}
+	 * Expected result: Number array of {1.0, 2.0, 3.0}
+	 */
+	@Test
+	public void testCreateNumberArrayNotNullData() {
+		double[] d = {1.0, 2.0, 3.0};
+		Number[] x = DataUtilities.createNumberArray(d);
+		
+		Number[] expected = {1.0,2.0,3.0};
+		Assert.assertArrayEquals(expected, x);
+	}
+	
+	/*
+	 * Testing creating a number array of double array {}
+	 * Expected result: Number array of {}
+	 */
+	@Test
+	public void testCreateNumberArrayEmptyData() {
+		double[] d = {};
+		Number[] x = DataUtilities.createNumberArray(d);
+		
+		Number[] expected = {};
+		Assert.assertArrayEquals(expected, x);
+	}
 }
