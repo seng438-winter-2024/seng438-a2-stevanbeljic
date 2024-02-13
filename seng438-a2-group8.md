@@ -60,11 +60,22 @@ The 5 methods under test within **org.jfree.data.DataUtilities** are:
 Mock objects will be necessary for the testing of some methods in DataUtilities since they utilize complex objects whose inner-workings we are not concerned with, we simply need to simulate their outputs.
 
 The 5 methods under test within **org.jfree.data.Range** are: 
-  1. method 1
-  2. method 2
-  3. method 3
-  4. method 4
-  5. method 5
+|   Method   |   Equivalence Class   |   Domains |   Validity  |
+|  --------  |  :-------------------:  |  :--------: |   -----:   |
+|Method 1|    |   |   |
+|  |  |  |  |
+|  |  |  |  |
+|Method 2|    |   |   |
+|  |  |  |  |
+|  |  |  |  |
+|Method 3|    |   |   |
+|  |  |  |  |
+|  |  |  |  |
+|Method 4|    |   |   |
+|  |  |  |  |
+|  |  |  |  |
+|Method 5|    |   |   |
+|  |  |  |  |
 
 
 # 3 Test cases developed
