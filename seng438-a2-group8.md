@@ -45,11 +45,7 @@ The 5 methods under test within **org.jfree.data.DataUtilities** are:
 |  |  |  |  |
 |createNumberArray(double[] data)|  data: null value  |  data is null  |  Invalid |
 |  | data:null value | data is not null | Valid |
-|  | data: Sign of sum of values | Sum is negative |   Valid   |
-|  | data: Sign of sum of values | Sum is zero |   Valid   |
-|  | data: Sign of sum of values | Sum is positive |   Valid   |
 |  | data: Emptiness of data | data is empty | Valid |
-|  | data: Emptiness of data | data is not empty | Valid |
 |  |  |  |  |
 |createNumberArray2D(double[][] data)|    |    |   |
 |  |  |  |  |
