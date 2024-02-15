@@ -534,4 +534,50 @@ public class DataUtilitiesTest extends DataUtilities {
 		Number[] expected = {};
 		Assert.assertArrayEquals(expected, x);
 	}
+
+	//=======================================================
+	//=======================================================
+	//========createNumberArray2D(double[][]data)============
+	//=======================================================
+	//=======================================================
+
+/*
+* Testing creating a 2D number array with null data
+* Expected result: InvalidParameterException thrown
+*/
+@Test
+public void testCalculateNumberArray2DNullData() {
+  try {
+      Number[][] result = DataUtilities.createNumberArray2D(null);
+  } catch (Exception e) {
+      assertTrue(e instanceof InvalidParameterException);
+  }
+}
+
+/*
+* Testing creating a 2D number array with non-null data
+* Expected result: 2D Number array with same values as input double array
+*/
+@Test
+public void testCalculateNumberArray2DNotNullData() {
+  double[][] data = {{1.0, 2.0}, {3.0, 4.0}};
+  Number[][] result = DataUtilities.createNumberArray2D(data);
+
+  Number[][] expected = {{1.0, 2.0}, {3.0, 4.0}};
+  Assert.assertArrayEquals(expected, result);
+}
+
+/*
+* Testing creating a 2D number array with an empty data array
+* Expected result: 2D Number array with an empty array
+*/
+@Test
+public void testCalculateNumberArray2DEmptyData() {
+  double[][] data = {};
+  Number[][] result = DataUtilities.createNumberArray2D(data);
+
+  Number[][] expected = {};
+  Assert.assertArrayEquals(expected, result);
+}
+	
 }
