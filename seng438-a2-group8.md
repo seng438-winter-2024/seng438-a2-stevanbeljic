@@ -138,4 +138,4 @@ Overall, from the challenges posed by the lab, we learned the value of what mock
 
 **Aaron:** The lab was straight forward and great practice in creating test sets for simple functions.  It was a practical experience in developing tests using black box testing techniques like equivalence classes and boundary values. Having to think about every class and boundary to cover all potential errors was a useful skill to learn during the assignment. Learning to use eclipse was initially a struggle but was very useful to use.
 
-**Rutvi:** Stuff here...
+**Rutvi:** We used Junit as a primary testing framework for this lab. Test cases were designed as individual methods within the JUnit test class, allowing for clear separation and focused testing of specific functionalities. For this lab, our test suite aimed to achieve comprehensive coverage by testing various aspects of each method, including edge cases, empty datasets, and different input values. I found this lab a bit more practical and useful than the first lab.
