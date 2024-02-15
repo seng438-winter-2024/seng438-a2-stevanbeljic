@@ -110,13 +110,13 @@ The 5 methods under test within **org.jfree.data.Range** are:
 |`createNumberArray(double[] data)`|  data: null value  |  data is null  |  |
 |  | data:null value | data is not null |  |
 |  | data: Emptiness of data | data is empty |  |
-|`createNumberArray2D(double[][] data)`|  data: null value  |  data is null  |  |
-|  | data:Null value | data is not null |  |
-|  | data: Empty | data is empty |  |
-|`getCumulativePercentages(KeyedValues data)`|  KeyedValues: null value  |  data is null  |   |
-|  |  KeyedValues: Empty  | data is empty |  |
-|  | KeyedValues: positive | positive entries |  |
-|  | KeyedValues: positive and negative| positive and negative entries |  |
+|`createNumberArray2D(double[][] data)`|  data: null value  |  data is null  | Fail |
+|  | data:Null value | data is not null | Fail |
+|  | data: Empty | data is empty | Pass |
+|`getCumulativePercentages(KeyedValues data)`|  KeyedValues: null value  |  data is null  | Pass |
+|  |  KeyedValues: Empty  | data is empty | Pass |
+|  | KeyedValues: positive | positive entries | Fail |
+|  | KeyedValues: positive and negative| positive and negative entries | Fail |
 ## org.jfree.data.Range
 | Method | Equivalence Class | Domain | Pass/Fail |
 | ---- | :--: | :--: | ---: |
