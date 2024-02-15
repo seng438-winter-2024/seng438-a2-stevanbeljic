@@ -12,7 +12,9 @@
 
 # 1 Introduction
 
-Text…
+In this lab we were tasked with implemnting black box testing using unit tests on JFreeChart. Were meant to first familiarize ourselves with JFreeChart, then develop unit tests, using JMock and JUnit, based on the Javadoc files provided which outline the expected output and behaviour of given classes and methods. 
+Upon familiarization with the system under test (SUT), we were asked to design a test plan and several test cases using a specific black-box test-case technique (equivalence classes, boundary values, etc.), and then evaluate the SUT's performance with our unit tests. We were to do this for method across 2 classes.
+Specifically, we were tasked with creating unit tests for all 5 methods within org.jfree.data.DataUtilities, and 5 of our choosing within org.jfree.data.Range.
 
 # 2 Detailed description of unit test strategy
 
@@ -76,20 +78,30 @@ The 5 methods under test within **org.jfree.data.Range** are:
 
 # 3 Test cases developed
 
-// write down the name of the test methods and classes. Organize the based on
-the source code method they test. identify which tests cover which partitions
-you have explained in the test strategy section above
+## org.jfree.data.DataUtilities
+| Method  | Equivalence Class | Domain | Pass/Fail  |
+|  --------  |  :-------------------:  |  :--------: |   -----:   |
 
-
+## org.jfree.data.Range
+| Method  | Equivalence Class | Domain | Pass/Fail  |
+|  --------  |  :-------------------:  |  :--------: |   -----:   |
 
 # 4 How the team work/effort was divided and managed
 
-Text…
+Familiarization with the SUT, planning of the specific test cases, as well as their developments have been done individually. Since there were 10 methods and 4 group members, two group members had to develop tests for one extra method. We established the equivalence class technique of black-box testing as a group, but ultimately decided familiarization and test case planning and development should be done individually as each method was very different and very few had common parameters which would be similar to other methods. After development and implementation of the unit tests, we came together as a group to educate and demonstrate our unit tests to eachother to familiarize eachother with eachothers' test cases and review in case of errors. 
 
 # 5 Difficulties encountered, challenges overcome, and lessons learned
 
-Text…
+A difficulty we expected to run into during this lab, which we did, was learning how to use JMock. Even still, we do not feel confident in our ability to utilize JMock effectively, as our knowledge mostly comes from simple Google searches and the provided mocked code in the assignment description. We also had difficulty developing the unit tests for certain methods, such as calculateRowTotal of DataUtilities, when the component's behaviour did not align with the Javadoc information. In calculateRowTotal, for example, the indeces do not align with the documentation, as the documentation states they are 0-based when they are in practice 1-based. Furthermore, even the initial setup of all the various libraries was somewhat difficult to get working on all of our computers.
+
+Overall, from the challenges posed by the lab, we learned the value of what mocking can provide for unit testing and why it is useful to use (so that you do not need to learn the intricacies of various other classes/objects which are isolated or distinct from the SUT. Even if we are not adept at using JMock, we better understand how and when it could be implemented.
 
 # 6 Comments/feedback on the lab itself
 
-Text…
+**Stevan:** I found this lab to be
+
+**Angelo:** Stuff here...
+
+**Aaron:** Stuff here...
+
+**Rutvi:** Stuff here...
