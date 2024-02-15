@@ -16,9 +16,9 @@ public class RangeTest {
 
     @Before
     public void setUp() throws Exception { 
-        exampleRange1 = new Range(-1, 1);
-        exampleRange2 = new Range(1, 5);
-        exampleRange3 = new Range(-5, -1);
+    	exampleRange1 = new Range(-1, 1);
+    	exampleRange2 = new Range(1, 5);
+    	exampleRange3 = new Range(-5, -1);
     }
 
 
@@ -29,27 +29,136 @@ public class RangeTest {
     }
     
     
-    /*
-     * Testing toString function
-     * Input: range with 1 lower and 5 upper
-     * Expected result: Range[1.0,5.0]
-     */
+    /*--------------- getLowerBound() -----------------*/
+	/*
+	 * Testing getLowerBound function
+	 * Input: range with 1 lower and 5 upper
+	 * Expected result: 1.0
+	 */
     @Test
-    public void toStringTest() {
-        assertEquals("The expected toString() return does not match expected. ",
-                "Range[1.0,5.0]",exampleRange2.toString());
+    public void getLowerBoundTestWithPositiveBounds() {
+    	assertEquals("The expected getLowerBound() return does not match expected. ",
+    			1.0,exampleRange2.getLowerBound(),.000000001d);
     }
-    /*
-     * Testing toString function with negative range
-     * Input: range with -1 lower and 1 upper
-     * Expected result: Range[-1.0,1.0]
-     */
+	/*
+	 * Testing getLowerBound function with negative number
+	 * Input: range with 1 lower and 5 upper
+	 * Expected result: 1.0
+	 */
     @Test
-    public void toStringTestWithNegative() {
-        assertEquals("The expected toString() return does not match expected. ",
-                "Range[-1.0,1.0]",exampleRange1.toString());
+    public void getLowerBoundTestWithNegativeLowerBound() {
+    	assertEquals("The expected getLowerBound() return does not match expected. ",
+    			-1.0,exampleRange1.getLowerBound(),.000000001d);
+    }
+	/*
+	 * Testing getLowerBound function with negative number
+	 * Input: range with 0 lower and 0 upper
+	 * Expected result: 0.0
+	 */
+    @Test
+    public void getLowerBoundTestWithZeroLower() {
+    	Range input1 = new Range(0,5);
+    	assertEquals("The expected getLowerBound() return does not match expected. ",
+    			0.0,input1.getLowerBound(),.000000001d);
     }
     
+    /*--------------- getUpperBound() -----------------*/
+	/*
+	 * Testing getUpperBound function
+	 * Input: range with 1 lower and 5 upper
+	 * Expected result: 5.0
+	 */
+    @Test
+    public void getUpperBoundTestWithPositiveBounds() {
+    	assertEquals("The expected getUpperBound() return does not match expected. ",
+    			5.0,exampleRange2.getUpperBound(),.000000001d);
+    } 
+	/*
+	 * Testing getUpperBound function
+	 * Input: range with -5 lower and -1.0 upper
+	 * Expected result: -1.0
+	 */
+    @Test
+    public void getUpperBoundTestWithNegativeLowerBound() {
+    	assertEquals("The expected getUpperBound() return does not match expected. ",
+    			-1.0,exampleRange3.getUpperBound(),.000000001d);
+    } 
+    
+	/*
+	 * Testing getUpperBound function
+	 * Input: range with 0 lower and 0.0 upper
+	 * Expected result: 0.0
+	 */
+    @Test
+    public void getUpperBoundTestWithZeroUpper() {
+    	Range input1 = new Range(-5,0);
+    	assertEquals("The expected getUpperBound() return does not match expected. ",
+    			0.0,input1.getUpperBound(),.000000001d);
+    } 
+    
+    /*--------------- To string tests-----------------
+	/*
+	 * Testing toString function
+	 * Input: range with 1 lower and 5 upper
+	 * Expected result: Range[1.0,5.0]
+	 */
+    @Test
+    public void toStringTestWithPositiveBounds() {
+    	assertEquals("The expected toString() return does not match expected. ",
+    			"Range[1.0,5.0]",exampleRange2.toString());
+    }
+    
+	/*
+	 * Testing toString function with negative range
+	 * Input: range with -1 lower and 1 upper
+	 * Expected result: Range[-1.0,1.0]
+	 */
+    
+    @Test
+    public void toStringTestWithNegativeLowerBound() {
+    	assertEquals("The expected toString() return does not match expected. ",
+    			"Range[-1.0,1.0]",exampleRange1.toString());
+    }
+    
+	/*
+	 * Testing toString function with zero range
+	 * Input: range with 0 lower and 3 upper
+	 * Expected result: Range[0.0,3.0]
+	 */
+    
+    @Test
+    public void toStringTestWithZeroLower() {
+    	Range input1 = new Range(0,3);
+    	assertEquals("The expected toString() return does not match expected. ",
+    			"Range[0.0,3.0]",input1.toString());
+    }
+	/*
+	 * Testing toString function with zero range
+	 * Input: range with -3 lower and 0 upper
+	 * Expected result: Range[-3.0,0.0]
+	 */
+    
+    @Test
+    public void toStringTestWithZeroUpper() {
+    	Range input1 = new Range(-3,0);
+    	assertEquals("The expected toString() return does not match expected. ",
+    			"Range[-3.0,0.0]",input1.toString());
+    }
+	/*
+	 * Testing toString function with negative range
+	 * Input: range with -9.0 lower and -5.0 upper
+	 * Expected result: Range[-9.0,-5.0]
+	 */
+    
+    @Test
+    public void toStringTestWithTwoNegative() {
+    	Range input1 = new Range(-9,-5);
+    	assertEquals("The expected toString() return does not match expected. ",
+    			"Range[-9.0,-5.0]",input1.toString());
+    }
+    
+    
+  /*----------shift Tests--------------*/
     /*
      * Testing shift function with delta of 0 on a Range with positive bounds 
      * Input: Range[1.0,5.0]
@@ -140,6 +249,7 @@ public class RangeTest {
     	assertEquals("The expected shift of exampleRange1 does not match expected", Range.shift(exampleRange3, -2), new Range(-7.0, -3.0));
     }
     
+    /*----------intersection Tests--------------*/
     /*
      * Testing intersects function on ranges that intersect within bounds
      * Input: Range[-1.0,1.0] with 0.0 and 2.0
@@ -173,10 +283,8 @@ public class RangeTest {
     
     @After
     public void tearDown() throws Exception {
-    	exampleRange1 = null;
-        exampleRange2 = null;
     }
-    
+
     @AfterClass
     public static void tearDownAfterClass() throws Exception {
     }
