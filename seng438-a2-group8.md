@@ -60,12 +60,15 @@ Mock objects will be necessary for the testing of some methods in DataUtilities 
 The 5 methods under test within **org.jfree.data.Range** are: 
 |   Method   |   Equivalence Class   |   Domains |   Validity  |
 |  --------  |  :-------------------:  |  :--------: |   -----:   |
-|Method 1|    |   |   |
-|  |  |  |  |
-|  |  |  |  |
-|Method 2|    |   |   |
-|  |  |  |  |
-|  |  |  |  |
+|`shift​(Range base, double delta)`|delta: Sign|delta = 0|Valid|
+|  |delta: Sign|delta > 0|Valid|
+|  |base: Sign of bounds|upper bound > 0, lower bound > 0|Valid|
+|  |base: Sign of bounds|upper bound > 0, lower bound < 0|Valid|
+|  |base: Sign of bounds|upper bound < 0, lower bound < 0|Valid|
+|  |base: Sign of bounds|upper bound < 0, lower bound > 0|Invalid|
+|`intersects(double b0, double b1)`|bounds| object bound1 < b0 < object bound2 < b1   |Valid|
+|  |bounds| object bound1 = b0 < object bound2 < b1   |Valid|
+|  |bounds| object bound1 < object bound2 < b0 < b1   |Invalid|
 |Method 3|    |   |   |
 |  |  |  |  |
 |  |  |  |  |
