@@ -72,16 +72,16 @@ The 5 methods under test within **org.jfree.data.Range** are:
 |`intersects(double b0, double b1)`|bounds| object bound1 < b0 < object bound2 < b1   |Valid|
 |  |bounds| object bound1 = b0 < object bound2 < b1   |Valid|
 |  |bounds| object bound1 < object bound2 < b0 < b1   |Invalid|
-|`range.getLowerBound()`| bounds | lower > 0  | valid  |
-|  | bounds | lower < 0 | valid |
-|  | bounds | lower = 0 | valid |
-|`range.getUpperBound()`| bounds | upper > 0  | valid  |
-|  | bounds | upper < 0 | valid |
-|  | bounds | upper = 0 | valid |
-|`range.toString()`|  bounds  |  upper bound > 0, lower bound > 0 |  valid |
-||  bounds  | upper bound > 0, lower bound < 0  |  valid |
-||  bounds  | upper bound < 0, lower bound < 0  |  valid |
-||  bounds  |  upper bound = 0 or lower bound = 0 |  valid |
+|`range.getLowerBound()`| bounds | lower > 0  | Valid  |
+|  | bounds | lower < 0 | Valid |
+|  | bounds | lower = 0 | Valid |
+|`range.getUpperBound()`| bounds | upper > 0  | Valid  |
+|  | bounds | upper < 0 | Valid |
+|  | bounds | upper = 0 | Valid |
+|`range.toString()`|  bounds  |  upper bound > 0, lower bound > 0 |  Valid |
+||  bounds  | upper bound > 0, lower bound < 0  |  Valid |
+||  bounds  | upper bound < 0, lower bound < 0  |  Valid |
+||  bounds  |  upper bound = 0 or lower bound = 0 |  Valid |
 
 
 # 3 Test cases developed
