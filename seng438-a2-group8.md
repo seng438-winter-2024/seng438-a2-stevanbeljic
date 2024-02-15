@@ -52,6 +52,7 @@ The 5 methods under test within **org.jfree.data.DataUtilities** are:
 |`createNumberArray2D(double[][] data)`|  data: null value  |  data is null  | Invalid |
 |  | data:Null value | data is not null | Valid |
 |  | data: Empty | data is empty | Valid |
+|  |  |  |  |
 |`getCumulativePercentages(KeyedValues data)`|  KeyedValues: null value  |  data is null  |  Valid  |
 |  |  KeyedValues: Empty  | data is empty | Valid |
 |  | KeyedValues: positive | positive entries | Valid |
@@ -97,6 +98,25 @@ The 5 methods under test within **org.jfree.data.Range** are:
 | | data: Emptiness of data  |  data is not empty  |  Pass |
 | | column: Validity of index  |  column < 0  |  Pass |
 | |  column: Validity of index  |  column >= 0  |  Pass |
+|`calculateRowTotal(Values2D data, int row)`|  data: null value  |  data is null  |  |
+|    |  data: null value  |  data is not null  |  |
+|    |  data: Sign of sum of values |  sum is negative  |  |
+|    |  data: Sign of sum of values |  sum is zero  |  |
+|    |  data: Sign of sum of values |  sum is positive  |  |
+|    |  data: Emptiness of data  |  data is empty  |  |
+|    |  data: Emptiness of data  |  data is not empty  |  |
+|    |  row: Validity of index  |  row < 0  |  |
+|    |  row: Validity of index  |  row >= 0  |  |
+|`createNumberArray(double[] data)`|  data: null value  |  data is null  |  |
+|  | data:null value | data is not null |  |
+|  | data: Emptiness of data | data is empty |  |
+|`createNumberArray2D(double[][] data)`|  data: null value  |  data is null  |  |
+|  | data:Null value | data is not null |  |
+|  | data: Empty | data is empty |  |
+|`getCumulativePercentages(KeyedValues data)`|  KeyedValues: null value  |  data is null  |   |
+|  |  KeyedValues: Empty  | data is empty |  |
+|  | KeyedValues: positive | positive entries |  |
+|  | KeyedValues: positive and negative| positive and negative entries |  |
 ## org.jfree.data.Range
 | Method | Equivalence Class | Domain | Pass/Fail |
 | ---- | :--: | :--: | ---: |
