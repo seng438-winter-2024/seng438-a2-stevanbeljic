@@ -25,7 +25,7 @@ Seeing as we are performing black-box testing using equivalence classes, it is n
 The 5 methods under test within **org.jfree.data.DataUtilities** are:
 |   Method   |   Equivalence Class   |   Domains |   Validity  |
 |  --------  |  :-------------------:  |  :--------: |   -----:   |
-|calculateColumnTotal(Values2D data, int column)|  data: null value  |  data is null  |  Invalid |
+|`calculateColumnTotal(Values2D data, int column)`|  data: null value  |  data is null  |  Invalid |
 |    |  data: null value  |  data is not null  |  Valid |
 |    |  data: Sign of sum of values |  sum is negative  |  Valid |
 |    |  data: Sign of sum of values |  sum is zero  |  Valid |
@@ -35,7 +35,7 @@ The 5 methods under test within **org.jfree.data.DataUtilities** are:
 |    |  column: Validity of index  |  column < 0  |  Invalid |
 |    |  column: Validity of index  |  column >= 0  |  Valid |
 |  |  |  |  |
-|calculateRowTotal(Values2D data, int row)|  data: null value  |  data is null  |  Invalid |
+|`calculateRowTotal(Values2D data, int row)`|  data: null value  |  data is null  |  Invalid |
 |    |  data: null value  |  data is not null  |  Valid |
 |    |  data: Sign of sum of values |  sum is negative  |  Valid |
 |    |  data: Sign of sum of values |  sum is zero  |  Valid |
@@ -45,14 +45,14 @@ The 5 methods under test within **org.jfree.data.DataUtilities** are:
 |    |  row: Validity of index  |  row < 0  |  Invalid |
 |    |  row: Validity of index  |  row >= 0  |  Valid |
 |  |  |  |  |
-|createNumberArray(double[] data)|  data: null value  |  data is null  |  Invalid |
+|`createNumberArray(double[] data)`|  data: null value  |  data is null  |  Invalid |
 |  | data:null value | data is not null | Valid |
 |  | data: Emptiness of data | data is empty | Valid |
 |  |  |  |  |
-|createNumberArray2D(double[][] data)|    |    |   |
+|`createNumberArray2D(double[][] data)`|    |    |   |
 |  |  |  |  |
 |  |  |  |  |
-| getCumulativePercentages(KeyedValues data) |    |    |    |
+|`getCumulativePercentages(KeyedValues data)`|    |    |    |
 |  |  |  |  |
 
 Mock objects will be necessary for the testing of some methods in DataUtilities since they utilize complex objects whose inner-workings we are not concerned with, we simply need to simulate their outputs.
