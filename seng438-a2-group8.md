@@ -84,7 +84,15 @@ The 5 methods under test within **org.jfree.data.Range** are:
 ## org.jfree.data.DataUtilities
 | Method  | Equivalence Class | Domain | Pass/Fail  |
 |  --------  |  :-------------------:  |  :--------: |   -----:   |
-
+|`calculateColumnTotal(Values2D data, int column)`|  data: null value  |  data is null  |  Fail |
+| | data: null value  |  data is not null  |  Pass |
+| | data: Sign of sum of values |  sum is negative  |  Pass |
+| | data: Sign of sum of values |  sum is zero  |  Pass |
+| | data: Sign of sum of values |  sum is positive  |  Pass |
+| | data: Emptiness of data  |  data is empty  |  Pass |
+| | data: Emptiness of data  |  data is not empty  |  Pass |
+| | column: Validity of index  |  column < 0  |  Pass |
+| |  column: Validity of index  |  column >= 0  |  Pass |
 ## org.jfree.data.Range
 | Method  | Equivalence Class | Domain | Pass/Fail  |
 |  --------  |  :-------------------:  |  :--------: |   -----:   |
