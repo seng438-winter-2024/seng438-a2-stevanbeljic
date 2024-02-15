@@ -9,6 +9,7 @@ import org.jfree.data.Values2D;
 import org.junit.Test;
 
 import org.jfree.data.DataUtilities;
+import org.jfree.data.KeyedValues;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
