@@ -579,5 +579,153 @@ public void testCalculateNumberArray2DEmptyData() {
   Number[][] expected = {};
   Assert.assertArrayEquals(expected, result);
 }
+
+//=======================================================
+//=======================================================
+//======getCumulativePercentages(KeyedValues data)=======
+//=======================================================
+//=======================================================
+
+/*
+ * Testing cumulative percentages with null data
+ * Expected result: InvalidParameterException thrown
+ */
+@Test
+public void testGetCumulativePercentagesNullData() {
+    Mockery context = new Mockery();
+    final KeyedValues data = context.mock(KeyedValues.class);
+    
+    context.checking(new Expectations() {{
+        allowing(data).getItemCount();
+        will(returnValue(0));
+    }});
+
+    try {
+        KeyedValues result = DataUtilities.getCumulativePercentages(data);
+    } catch (Exception e) {
+        assertTrue(e instanceof InvalidParameterException);
+    }
+    context.assertIsSatisfied();
+}
+
+/*
+ * Testing cumulative percentages with empty data
+ * Expected result: KeyedValues with no data
+ */
+@Test
+public void testGetCumulativePercentagesEmptyData() {
+    Mockery context = new Mockery();
+    final KeyedValues data = context.mock(KeyedValues.class);
+    
+    context.checking(new Expectations() {{
+        allowing(data).getItemCount();
+        will(returnValue(0));
+    }});
+
+    KeyedValues result = DataUtilities.getCumulativePercentages(data);
+
+    assertTrue(result.getItemCount() == 0);
+    context.assertIsSatisfied();
+}
+
+/*
+ * Testing cumulative percentages with non-empty data
+ * Input:
+ * Key  Value
+ * 0        5
+ * 1        9
+ * 2        2
+ * Expected result:
+ * Key  Value
+ * 0     0.3125 (5 / 16)
+ * 1     0.875 ((5 + 9) / 16)
+ * 2     1.0 ((5 + 9 + 2) / 16)
+ */
+@Test
+public void testGetCumulativePercentagesNonEmptyData() {
+    Mockery context = new Mockery();
+    final KeyedValues data = context.mock(KeyedValues.class);
+    
+    context.checking(new Expectations() {{
+        allowing(data).getItemCount();
+        will(returnValue(3));
+
+        allowing(data).getKey(0);
+        will(returnValue(0));
+
+        allowing(data).getKey(1);
+        will(returnValue(1));
+
+        allowing(data).getKey(2);
+        will(returnValue(2));
+
+        allowing(data).getValue(0);
+        will(returnValue(5));
+
+        allowing(data).getValue(1);
+        will(returnValue(9));
+
+        allowing(data).getValue(2);
+        will(returnValue(2));
+    }});
+
+    KeyedValues result = DataUtilities.getCumulativePercentages(data);
+
+    assertEquals(0.3125, result.getValue(0));
+    assertEquals(0.875, result.getValue(1));
+    assertEquals(1.0, result.getValue(2));
+
+    context.assertIsSatisfied();
+}
+
+/*
+ * Testing cumulative percentages with negative values in data
+ * Input:
+ * Key  Value
+ * 0        -3
+ * 1        7
+ * 2        1
+ * Expected result:
+ * Key  Value
+ * 0     0.6 (-3 / 5)
+ * 1     0.8 ((-3 + 7) / 5)
+ * 2     1.0 ((-3 + 7 + 1) / 5)
+ */
+@Test
+public void testGetCumulativePercentagesNegativeValues() {
+    Mockery context = new Mockery();
+    final KeyedValues data = context.mock(KeyedValues.class);
+    
+    context.checking(new Expectations() {{
+        allowing(data).getItemCount();
+        will(returnValue(3));
+
+        allowing(data).getKey(0);
+        will(returnValue(0));
+
+        allowing(data).getKey(1);
+        will(returnValue(1));
+
+        allowing(data).getKey(2);
+        will(returnValue(2));
+
+        allowing(data).getValue(0);
+        will(returnValue(-3));
+
+        allowing(data).getValue(1);
+        will(returnValue(7));
+
+        allowing(data).getValue(2);
+        will(returnValue(1));
+    }});
+
+    KeyedValues result = DataUtilities.getCumulativePercentages(data);
+
+    assertEquals(0.6, result.getValue(0));
+    assertEquals(0.8, result.getValue(1));
+    assertEquals(1.0, result.getValue(2));
+
+    context.assertIsSatisfied();
+}
 	
 }
