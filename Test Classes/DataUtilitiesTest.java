@@ -451,7 +451,7 @@ public class DataUtilitiesTest extends DataUtilities {
 			oneOf(values2d).getRowCount();
 			will(returnValue((1)));
 			
-			oneOf(values2d).getValue(0, -1);
+			oneOf(values2d).getValue(-1, 0);
 			will(returnValue((1)));
 		}});
 		
