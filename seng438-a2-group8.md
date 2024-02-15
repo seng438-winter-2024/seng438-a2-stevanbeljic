@@ -69,14 +69,16 @@ The 5 methods under test within **org.jfree.data.Range** are:
 |`intersects(double b0, double b1)`|bounds| object bound1 < b0 < object bound2 < b1   |Valid|
 |  |bounds| object bound1 = b0 < object bound2 < b1   |Valid|
 |  |bounds| object bound1 < object bound2 < b0 < b1   |Invalid|
-|Method 3|    |   |   |
-|  |  |  |  |
-|  |  |  |  |
-|Method 4|    |   |   |
-|  |  |  |  |
-|  |  |  |  |
-|Method 5|    |   |   |
-|  |  |  |  |
+|`range.getLowerBound()`| bounds | lower > 0  | valid  |
+|  | bounds | lower < 0 | valid |
+|  | bounds | lower = 0 | valid |
+|`range.getUpperBound()`| bounds | upper > 0  | valid  |
+|  | bounds | upper < 0 | valid |
+|  | bounds | upper = 0 | valid |
+|`range.toString()`|  bounds  |  upper bound > 0, lower bound > 0 |  valid |
+||  bounds  | upper bound > 0, lower bound < 0  |  valid |
+||  bounds  | upper bound < 0, lower bound < 0  |  valid |
+||  bounds  |  upper bound = 0 or lower bound = 0 |  valid |
 
 
 # 3 Test cases developed
@@ -94,16 +96,27 @@ The 5 methods under test within **org.jfree.data.Range** are:
 | | column: Validity of index  |  column < 0  |  Pass |
 | |  column: Validity of index  |  column >= 0  |  Pass |
 ## org.jfree.data.Range
-| Method  | Equivalence Class | Domain | Pass/Fail  |
-|  --------  |  :-------------------:  |  :--------: |   -----:   |
-|`shift​(Range base, double delta)`|delta: Sign|delta = 0|Pass |
-|  |delta: Sign|delta > 0|Pass |
-|  |base: Sign of bounds|upper bound > 0, lower bound > 0|Pass |
-|  |base: Sign of bounds|upper bound > 0, lower bound < 0|Pass |
-|  |base: Sign of bounds|upper bound < 0, lower bound < 0|Pass |
-|`intersects(double b0, double b1)`|bounds| object bound1 < b0 < object bound2 < b1   |Fail|
-|  |bounds| object bound1 = b0 < object bound2 < b1   |Fail |
-|  |bounds| object bound1 < object bound2 < b0 < b1   |Pass|
+| Method | Equivalence Class | Domain | Pass/Fail |
+| ---- | :--: | :--: | ---: |
+| `shift​(Range base, double delta)` | delta: Sign | delta = 0 | Pass |
+|  | delta: Sign | delta > 0 | Pass |
+|  | base: Sign of bounds | upper bound > 0, lower bound > 0 | Pass |
+|  | base: Sign of bounds | upper bound > 0, lower bound < 0 | Pass |
+|  | base: Sign of bounds | upper bound < 0, lower bound < 0 | Pass |
+| `intersects(double b0, double b1)` | bounds | object bound1 < b0 < object bound2 < b1 | Fail |
+|  | bounds | object bound1 = b0 < object bound2 < b1 | Fail |
+|  | bounds | object bound1 < object bound2 < b0 < b1 | Pass |
+| `getLowerBound()` | bounds | lower > 0 | Pass |
+| <br> | bounds | lower < 0 | Pass |
+|  | bounds | lower = 0 | Pass |
+| `getUpperBound()` | bounds | upper > 0 | Fail |
+|  | bounds | upper < 0 | Fail |
+|  | bounds | upper = 0 | Fail |
+| `toString()` | bounds | upper bound > 0, lower bound > 0 | Fail |
+|  | bounds | upper bound > 0, lower bound < 0 | Fail |
+|  | bounds | upper bound < 0, lower bound < 0  | Fail |
+|  | bounds | upper bound = 0  | Fail |
+|  | bounds | lower bound = 0 | Fail |
 
 # 4 How the team work/effort was divided and managed
 
@@ -121,6 +134,6 @@ Overall, from the challenges posed by the lab, we learned the value of what mock
 
 **Angelo:** I found this lab to be more clearly defined that assignment 1. I also found it more applicational to what we were learning in class with the use of boundary values, weak/strong ECT, and mocking. Using JMock and actually seeing how mocking is used practically was very useful and made it easier for me to understand why it is used and when it should be used. I also appreciate the flexibility of allowing us to choose which methods of each library we wanted to test. Overall, I think this lab was very helpful in applying the concepts learned in class.
 
-**Aaron:** Stuff here...
+**Aaron:** The lab was straight forward and great practice in creating test sets for simple functions.  It was a practical experience in developing tests using black box testing techniques like equivalence classes and boundary values. Having to think about every class and boundary to cover all potential errors was a useful skill to learn during the assignment. Learning to use eclipse was initially a struggle but was very useful to use.
 
 **Rutvi:** Stuff here...
