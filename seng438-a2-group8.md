@@ -49,11 +49,13 @@ The 5 methods under test within **org.jfree.data.DataUtilities** are:
 |  | data:null value | data is not null | Valid |
 |  | data: Emptiness of data | data is empty | Valid |
 |  |  |  |  |
-|`createNumberArray2D(double[][] data)`|    |    |   |
-|  |  |  |  |
-|  |  |  |  |
-|`getCumulativePercentages(KeyedValues data)`|    |    |    |
-|  |  |  |  |
+|`createNumberArray2D(double[][] data)`|  data: null value  |  data is null  | Invalid |
+|  | data:Null value | data is not null | Valid |
+|  | data: Empty | data is empty | Valid |
+|`getCumulativePercentages(KeyedValues data)`|  KeyedValues: null value  |  data is null  |  Valid  |
+|  |  KeyedValues: Empty  | data is empty | Valid |
+|  | KeyedValues: positive | positive entries | Valid |
+|  | KeyedValues: positive and negative| positive and negative entries | Valid |
 
 Mock objects will be necessary for the testing of some methods in DataUtilities since they utilize complex objects whose inner-workings we are not concerned with, we simply need to simulate their outputs.
 
