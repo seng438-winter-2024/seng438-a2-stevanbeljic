@@ -87,58 +87,58 @@ The 5 methods under test within **org.jfree.data.Range** are:
 # 3 Test cases developed
 
 ## org.jfree.data.DataUtilities
-| Method  | Equivalence Class | Domain | Pass/Fail  |
-|  --------  |  :-------------------:  |  :--------: |   -----:   |
-|`calculateColumnTotal(Values2D data, int column)`|  data: null value  |  data is null  |  Fail |
-| | data: null value  |  data is not null  |  Pass |
-| | data: Sign of sum of values |  sum is negative  |  Pass |
-| | data: Sign of sum of values |  sum is zero  |  Pass |
-| | data: Sign of sum of values |  sum is positive  |  Pass |
-| | data: Emptiness of data  |  data is empty  |  Pass |
-| | data: Emptiness of data  |  data is not empty  |  Pass |
-| | column: Validity of index  |  column < 0  |  Pass |
-| |  column: Validity of index  |  column >= 0  |  Pass |
-|`calculateRowTotal(Values2D data, int row)`|  data: null value  |  data is null  |  |
-|    |  data: null value  |  data is not null  |  |
-|    |  data: Sign of sum of values |  sum is negative  |  |
-|    |  data: Sign of sum of values |  sum is zero  |  |
-|    |  data: Sign of sum of values |  sum is positive  |  |
-|    |  data: Emptiness of data  |  data is empty  |  |
-|    |  data: Emptiness of data  |  data is not empty  |  |
-|    |  row: Validity of index  |  row < 0  |  |
-|    |  row: Validity of index  |  row >= 0  |  |
-|`createNumberArray(double[] data)`|  data: null value  |  data is null  |  |
-|  | data:null value | data is not null |  |
-|  | data: Emptiness of data | data is empty |  |
-|`createNumberArray2D(double[][] data)`|  data: null value  |  data is null  | Fail |
-|  | data:Null value | data is not null | Fail |
-|  | data: Empty | data is empty | Pass |
-|`getCumulativePercentages(KeyedValues data)`|  KeyedValues: null value  |  data is null  | Pass |
-|  |  KeyedValues: Empty  | data is empty | Pass |
-|  | KeyedValues: positive | positive entries | Fail |
-|  | KeyedValues: positive and negative| positive and negative entries | Fail |
+| Method under Test| Test Method | Equivalence Class | Domain | Pass/Fail  |
+|  --------  |--------|  :-------------------:  |  :--------: |   -----:   |
+|`calculateColumnTotal(Values2D data, int column)`| `testCalculateColumnTotalDataNull` | data: null value  |  data is null  |  Fail |
+| |`testCalculateColumnTotalDataNotNull`| data: null value  |  data is not null  |  Pass |
+| |`testCalculateColumnTotalSumNegative`| data: Sign of sum of values |  sum is negative  |  Pass |
+| |`testCalculateColumnTotalSumZero`| data: Sign of sum of values |  sum is zero  |  Pass |
+| |`testCalculateColumnTotalSumPositive`| data: Sign of sum of values |  sum is positive  |  Pass |
+| |`testCalculateColumnTotalEmpty`| data: Emptiness of data  |  data is empty  |  Pass |
+| |`testCalculateColumnTotalNotEmpty`| data: Emptiness of data  |  data is not empty  |  Pass |
+| |`testCalculateColumnTotalInvalidIndex`| column: Validity of index  |  column < 0  |  Pass |
+| |`testCalculateColumnTotalInvalidIndex`|  column: Validity of index  |  column >= 0  |  Pass |
+|`calculateRowTotal(Values2D data, int row)`| `testCalculateRowTotalDataNull`| data: null value  |  data is null  | Fail |
+|  |`testCalculateRowTotalDataNotNull`  |  data: null value  |  data is not null  | Pass |
+|  |`testCalculateRowTotalSumNegative`  |  data: Sign of sum of values |  sum is negative  | Pass |
+|  |`testCalculateRowTotalSumZero`  |  data: Sign of sum of values |  sum is zero  | Pass |
+|  |`testCalculateRowTotalSumPositive`  |  data: Sign of sum of values |  sum is positive  | Pass |
+|  |`testCalculateRowTotalEmpty`  |  data: Emptiness of data  |  data is empty  | Pass |
+|  |`testCalculateRowTotalNotEmpty`  |  data: Emptiness of data  |  data is not empty  | Pass |
+|  |`testCalculateRowTotalInvalidIndex`  |  row: Validity of index  |  row < 0  | Pass |
+|  |`testCalculateRowTotalValidIndex`  |  row: Validity of index  |  row >= 0  | Pass |
+|`createNumberArray(double[] data)`| `testCreateNumberArrayNullData`| data: null value  |  data is null  | Fail |
+|  |`testCreateNumberArrayNotNullData`| data:null value | data is not null | Fail |
+|  |`testCreateNumberArrayEmptyData`| data: Emptiness of data | data is empty | Pass |
+|`createNumberArray2D(double[][] data)`|`testCalculateNumberArray2DNullData`|  data: null value  |  data is null  | Fail |
+|  |`testCalculateNumberArray2DNotNullData`| data:Null value | data is not null | Fail |
+|  |`testCalculateNumberArray2DEmptyData`| data: Empty | data is empty | Pass |
+|`getCumulativePercentages(KeyedValues data)`|`testGetCumulativePercentagesNullData`|  KeyedValues: null value  |  data is null  | Pass |
+|  |`testGetCumulativePercentagesEmptyData`|  KeyedValues: Empty  | data is empty | Pass |
+|  |`testGetCumulativePercentagesNonEmptyData`| KeyedValues: positive | positive entries | Fail |
+|  |`testGetCumulativePercentagesNegativeValues`| KeyedValues: positive and negative| positive and negative entries | Fail |
 ## org.jfree.data.Range
-| Method | Equivalence Class | Domain | Pass/Fail |
-| ---- | :--: | :--: | ---: |
-| `shift​(Range base, double delta)` | delta: Sign | delta = 0 | Pass |
-|  | delta: Sign | delta > 0 | Pass |
-|  | base: Sign of bounds | upper bound > 0, lower bound > 0 | Pass |
-|  | base: Sign of bounds | upper bound > 0, lower bound < 0 | Pass |
-|  | base: Sign of bounds | upper bound < 0, lower bound < 0 | Pass |
-| `intersects(double b0, double b1)` | bounds | object bound1 < b0 < object bound2 < b1 | Fail |
-|  | bounds | object bound1 = b0 < object bound2 < b1 | Fail |
-|  | bounds | object bound1 < object bound2 < b0 < b1 | Pass |
-| `getLowerBound()` | bounds | lower > 0 | Pass |
-| <br> | bounds | lower < 0 | Pass |
-|  | bounds | lower = 0 | Pass |
-| `getUpperBound()` | bounds | upper > 0 | Fail |
-|  | bounds | upper < 0 | Fail |
-|  | bounds | upper = 0 | Fail |
-| `toString()` | bounds | upper bound > 0, lower bound > 0 | Fail |
-|  | bounds | upper bound > 0, lower bound < 0 | Fail |
-|  | bounds | upper bound < 0, lower bound < 0  | Fail |
-|  | bounds | upper bound = 0  | Fail |
-|  | bounds | lower bound = 0 | Fail |
+| Method under Test| Test Method |Equivalence Class | Domain | Pass/Fail |
+| ---- | ---- |:--: | :--: | ---: |
+| `shift​(Range base, double delta)` | `shiftPositiveAndPositiveRangeWith0Test` |delta: Sign | delta = 0 | Pass |
+|  | `` | delta: Sign | delta > 0 | Pass |
+|  |``| base: Sign of bounds | upper bound > 0, lower bound > 0 | Pass |
+|  |``| base: Sign of bounds | upper bound > 0, lower bound < 0 | Pass |
+|  |``| base: Sign of bounds | upper bound < 0, lower bound < 0 | Pass |
+| `intersects(double b0, double b1)` |`intersectsWithinBoundsTest`| bounds | object bound1 < b0 < object bound2 < b1 | Fail |
+|  |`intersectsOnBoundsTest`| bounds | object bound1 = b0 < object bound2 < b1 | Fail |
+|  |`intersectOutsideBoundsTest`| bounds | object bound1 < object bound2 < b0 < b1 | Pass |
+| `getLowerBound()` |`getLowerBoundTestWithPositiveBounds`| bounds | lower > 0 | Pass |
+| <br> |`getLowerBoundTestWithNegativeLowerBound`| bounds | lower < 0 | Pass |
+|  |`getLowerBoundTestWithZeroLower`| bounds | lower = 0 | Pass |
+| `getUpperBound()` |`getUpperBoundTestWithPositiveBounds`| bounds | upper > 0 | Fail |
+|  |`getUpperBoundTestWithNegativeLowerBound`| bounds | upper < 0 | Fail |
+|  |`getUpperBoundTestWithZeroUpper`| bounds | upper = 0 | Fail |
+| `toString()` |`toStringTestWithPositiveBounds`| bounds | upper bound > 0, lower bound > 0 | Fail |
+|  |`toStringTestWithNegativeLowerBound`| bounds | upper bound > 0, lower bound < 0 | Fail |
+|  |`toStringTestWithTwoNegative`| bounds | upper bound < 0, lower bound < 0  | Fail |
+|  |`toStringTestWithZeroUpper`| bounds | upper bound = 0  | Fail |
+|  |`toStringTestWithZeroLower`| bounds | lower bound = 0 | Fail |
 
 # 4 How the team work/effort was divided and managed
 
