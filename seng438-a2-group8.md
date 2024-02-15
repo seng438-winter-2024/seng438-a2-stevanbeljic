@@ -119,7 +119,7 @@ Overall, from the challenges posed by the lab, we learned the value of what mock
 
 **Stevan:** I found this lab to be much better than Assignment 1, as the instructions were much more clear and better-worded. The material for this lab was also very interesting and useful. I was already very familiar with JUnit going into this lab as I have used it for various personal and academic projects prior to this, but this was my first time using JMock and it was a very good technology to learn. JMock seems very useful when using it to subsitute for code not actively under test, and this lab did a good job of introducing us into its implementation and use.
 
-**Angelo:** Stuff here...
+**Angelo:** I found this lab to be more clearly defined that assignment 1. I also found it more applicational to what we were learning in class with the use of boundary values, weak/strong ECT, and mocking. Using JMock and actually seeing how mocking is used practically was very useful and made it easier for me to understand why it is used and when it should be used. I also appreciate the flexibility of allowing us to choose which methods of each library we wanted to test. Overall, I think this lab was very helpful in applying the concepts learned in class.
 
 **Aaron:** Stuff here...
 
