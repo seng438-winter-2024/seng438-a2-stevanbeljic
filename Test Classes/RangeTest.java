@@ -9,6 +9,7 @@ import static org.junit.Assert.*; import org.jfree.data.Range; import org.junit.
 public class RangeTest {
     private Range exampleRange1;
     private Range exampleRange2;
+    private Range exampleRange3;
     @BeforeClass public static void setUpBeforeClass() throws Exception {
     }
 
@@ -17,6 +18,7 @@ public class RangeTest {
     public void setUp() throws Exception { 
         exampleRange1 = new Range(-1, 1);
         exampleRange2 = new Range(1, 5);
+        exampleRange3 = new Range(-5, -1);
     }
 
 
@@ -59,6 +61,16 @@ public class RangeTest {
     }
     
     /*
+     * Testing shift function with a negative delta on a Range with a negative bound 
+     * Input: Range[1.0,5.0]
+     * Expected result: Range[-1.0,3.0]
+     */
+    @Test
+    public void shiftPositiveAndPositiveRangeWithNegativeValueTest() {
+    	assertEquals("The expected shift of exampleRange2 does not match expected", Range.shift(exampleRange2, -2), new Range(-1.0, 3.0));
+    }
+
+    /*
      * Testing shift function with a positive delta on a Range with a negative bound 
      * Input: Range[-1.0,1.0]
      * Expected result: Range[1.0,3.0]
@@ -69,23 +81,33 @@ public class RangeTest {
     }
     
     /*
-     * Testing shift function with a positive delta on a Range with a negative bound 
-     * Input: Range[1.0,5.0]
-     * Expected result: Range[-1.0,3.0]
-     */
-    @Test
-    public void shiftPositiveAndPositiveRangeWithNegativeValueTest() {
-    	assertEquals("The expected shift of exampleRange2 does not match expected", Range.shift(exampleRange2, -2), new Range(-1.0, 3.0));
-    }
-    
-    /*
-     * Testing shift function with a positive delta on a Range with a negative bound 
+     * Testing shift function with a negative delta on a Range with a negative bound 
      * Input: Range[-1.0,1.0]
      * Expected result: Range[-3.0,-1.0]
      */
     @Test
     public void shiftPositiveAndNegativeRangeWithNegativeValueTest() {
     	assertEquals("The expected shift of exampleRange1 does not match expected", Range.shift(exampleRange1, -2), new Range(-3.0, -1.0));
+    }
+
+    /*
+     * Testing shift function with a positive delta on a Range with negative bounds
+     * Input: Range[-1.0,-5.0]
+     * Expected result: Range[-3.0,-1.0]
+     */
+    @Test
+    public void shiftNegativeAndNegativeRangeWithPositiveValueTest() {
+    	assertEquals("The expected shift of exampleRange1 does not match expected", Range.shift(exampleRange3, 2), new Range(-3.0, 1.0));
+    }
+
+    /*
+     * Testing shift function with a negative delta on a Range with negative bounds
+     * Input: Range[-1.0,-5.0]
+     * Expected result: Range[-3.0,-1.0]
+     */
+    @Test
+    public void shiftNegativeAndNegativeRangeWithNegativeValueTest() {
+    	assertEquals("The expected shift of exampleRange1 does not match expected", Range.shift(exampleRange3, -2), new Range(-7.0, -3.0));
     }
     
     /*
