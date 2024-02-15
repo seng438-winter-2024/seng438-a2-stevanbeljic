@@ -96,6 +96,14 @@ The 5 methods under test within **org.jfree.data.Range** are:
 ## org.jfree.data.Range
 | Method  | Equivalence Class | Domain | Pass/Fail  |
 |  --------  |  :-------------------:  |  :--------: |   -----:   |
+|`shift​(Range base, double delta)`|delta: Sign|delta = 0|Pass |
+|  |delta: Sign|delta > 0|Pass |
+|  |base: Sign of bounds|upper bound > 0, lower bound > 0|Pass |
+|  |base: Sign of bounds|upper bound > 0, lower bound < 0|Pass |
+|  |base: Sign of bounds|upper bound < 0, lower bound < 0|Pass |
+|`intersects(double b0, double b1)`|bounds| object bound1 < b0 < object bound2 < b1   |Fail|
+|  |bounds| object bound1 = b0 < object bound2 < b1   |Fail |
+|  |bounds| object bound1 < object bound2 < b0 < b1   |Pass|
 
 # 4 How the team work/effort was divided and managed
 
@@ -103,7 +111,7 @@ Familiarization with the SUT, planning of the specific test cases, as well as th
 
 # 5 Difficulties encountered, challenges overcome, and lessons learned
 
-A difficulty we expected to run into during this lab, which we did, was learning how to use JMock. Even still, we do not feel confident in our ability to utilize JMock effectively, as our knowledge mostly comes from simple Google searches and the provided mocked code in the assignment description. We also had difficulty developing the unit tests for certain methods, such as calculateRowTotal of DataUtilities, when the component's behaviour did not align with the Javadoc information. In calculateRowTotal, for example, the indeces do not align with the documentation, as the documentation states they are 0-based when they are in practice 1-based. Furthermore, even the initial setup of all the various libraries was somewhat difficult to get working on all of our computers.
+A difficulty we expected to run into during this lab, which we did, was learning how to use JMock. Even still, we do not feel confident in our ability to utilize JMock effectively, as our knowledge mostly comes from simple Google searches and the provided mocked code in the assignment description. We also had difficulty developing the unit tests for certain methods, such as calculateRowTotal of DataUtilities, when the component's behaviour did not align with the Javadoc information. In calculateRowTotal, for example, the indeces do not align with the documentation, as the documentation states they are 0-based when they are in practice 1-based. Furthermore, even the initial setup of all the various libraries and IDEs was somewhat difficult to get working on all of our computers even when following the provided instructions.
 
 Overall, from the challenges posed by the lab, we learned the value of what mocking can provide for unit testing and why it is useful to use (so that you do not need to learn the intricacies of various other classes/objects which are isolated or distinct from the SUT. Even if we are not adept at using JMock, we better understand how and when it could be implemented.
 
