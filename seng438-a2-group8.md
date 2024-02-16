@@ -121,10 +121,15 @@ The 5 methods under test within **org.jfree.data.Range** are:
 | Method under Test| Test Method |Equivalence Class | Domain | Pass/Fail |
 | ---- | ---- |:--: | :--: | ---: |
 | `shift​(Range base, double delta)` | `shiftPositiveAndPositiveRangeWith0Test` |delta: Sign | delta = 0 | Pass |
-|  | `` | delta: Sign | delta > 0 | Pass |
-|  |``| base: Sign of bounds | upper bound > 0, lower bound > 0 | Pass |
-|  |``| base: Sign of bounds | upper bound > 0, lower bound < 0 | Pass |
-|  |``| base: Sign of bounds | upper bound < 0, lower bound < 0 | Pass |
+|  | `shiftPositiveAndNegativeRangeWith0Test` |delta: Sign| delta = 0, positive bounds | Pass |
+|  | `shiftPositiveAndNegativeRangeWith0Test` |delta: Sign| delta = 0, positive bound and negative bound | Pass |
+|  | `shiftNegativeAndNegativeRangeWith0Test` |delta: Sign| delta = 0, negative bounds | Pass |
+|  | `shiftPositiveAndPositiveRangeWithPositiveValueTest` | delta: Sign | delta > 0, positive bounds | Pass |
+|  |`shiftPositiveAndPositiveRangeWithNegativeValueTest`| base: Sign of bounds | delta < 0, upper bound > 0, lower bound > 0 | Pass |
+|  |`shiftPositiveAndNegativeRangeWithPositiveValueTest`| base: Sign of bounds | delta > 0, upper bound > 0, lower bound < 0 | Pass |
+|  |`shiftPositiveAndNegativeRangeWithNegativeValueTest`| base: Sign of bounds | delta < 0, upper bound > 0, lower bound < 0 | Pass |
+|  |`shiftNegativeAndNegativeRangeWithPositiveValueTest`| base: Sign of bounds | delta > 0, upper bound < 0, lower bound < 0 | Pass |
+|  |`shiftNegativeAndNegativeRangeWithNegativeValueTest`| base: Sign of bounds | delta < 0, upper bound < 0, lower bound < 0 | Pass |
 | `intersects(double b0, double b1)` |`intersectsWithinBoundsTest`| bounds | object bound1 < b0 < object bound2 < b1 | Fail |
 |  |`intersectsOnBoundsTest`| bounds | object bound1 = b0 < object bound2 < b1 | Fail |
 |  |`intersectOutsideBoundsTest`| bounds | object bound1 < object bound2 < b0 < b1 | Pass |
