@@ -2,10 +2,7 @@ package org.jfree.data.test;
 
 import static org.junit.Assert.*;
 import org.jfree.data.Range;
-import org.junit.Test;
-
-import static org.junit.Assert.*; import org.jfree.data.Range; import org.junit.*;
-
+import org.junit.*;
 public class RangeTest {
     private Range exampleRange1;
     private Range exampleRange2;
